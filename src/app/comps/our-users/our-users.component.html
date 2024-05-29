@@ -1,0 +1,14 @@
+<p>our-users works!</p>
+<button (click)="all()" name="up" id="up">כל המשתמשים</button>
+<div *ngIf="show">
+    <div *ngFor="let u of allUsers" >
+        <h1>{{u.firstName}} {{u.lastName}}</h1>
+        <h3>{{u.phone}}</h3>
+        <h3>{{u.email}}</h3>
+        <h3>{{u.password}}</h3>
+        <h3>{{u.isFirstAid}}</h3>
+        <br>
+        <br>
+    </div>
+
+</div>

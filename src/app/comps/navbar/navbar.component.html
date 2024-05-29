@@ -1,0 +1,31 @@
+
+<nav>
+      <!--לא מחובר  -->
+  <ul *ngIf="!us.isAdmin&&!us.isLogin">
+    <li><a routerLink="./home">דף הבית</a></li>
+    <li><a routerLink="./register">הרשמה</a></li>
+    <li><a routerLink="./login">התחברות</a></li>
+    <li><a routerLink="./our trips">כל הטיולים</a></li>
+  </ul>
+
+     <!-- משתמש-->
+     <ul *ngIf="us.isLogin">
+      <li><a routerLink="./home">דף הבית</a></li>
+      <li><a routerLink="./our trips">כל הטיולים</a></li>
+      <li ><a routerLink="./my place">אזור אישי</a> </li>
+      <label>!שלום ל{{us.currentUser.firstName}}</label>
+    </ul>
+
+      <!-- מנהל-->
+  <ul  *ngIf="us.isAdmin">
+    <li><a routerLink="./home">דף הבית</a></li>
+    <li><a routerLink="./our users">המשתמשים שלנו</a></li>
+    <li><a routerLink="./our trips">כל הטיולים</a></li>
+    <li ><a routerLink="./Admin">אזור מנהל</a> </li>
+    <label>!שלום למנהל</label>
+  </ul>
+   
+
+</nav>
+<router-outlet></router-outlet>
+

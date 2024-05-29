@@ -1,0 +1,59 @@
+<section>
+  <div class="login-container">
+        <h1>להרשמה</h1>
+        <!-- הטופס למילוי להרשמה -->
+     <form (ngSubmit)="save()"  [formGroup]="myForm" >
+    <div class="input-box">
+      <span class="icon">
+        <i class="fa-solid fa-envelope"></i>
+      </span>
+      <input name="firstName" type="text" placeholder="שם פרטי"  id="firstName" formControlName="myFirstName" >
+      <label for="firstName">הכנס שם פרטי </label>
+    </div>
+
+    <div class="input-box">
+      <span class="icon">
+        <i class="fa-solid fa-envelope"></i>
+      </span>
+      <input name="lasttName" type="text" placeholder="שם משפחה"  id="lastName" formControlName="myLastName" >
+      <label for="lasttName">הכנס שם משפחה </label>
+    </div>
+
+    <div class="input-box">
+      <span class="icon">
+        <i class="fa-solid fa-envelope"></i>
+      </span>
+      <input name="phone" type="text" placeholder="מספר טלפון" id="phone"  formControlName="myPhone">
+      <label for="phone">הכנס מספר טלפון </label>
+    </div>
+
+    <div class="input-box">
+      <span class="icon">
+        <i class="fa-solid fa-envelope"></i>
+      </span>
+        <input name="email" type="email" placeholder="כתובת מייל" id="email" formControlName="myEmail">
+        <label for="email">הכנס כתובת מייל</label>
+    </div>
+
+    <div class="input-box">
+            <span class="icon">
+              <i class="fa-solid fa-lock"></i>
+            </span>
+            <input name="pass" type="password" placeholder="סיסמה" id="contraseña" formControlName="myPass">
+            <label for="contraseña">הכנס סיסמא</label>
+    </div>
+
+    <div class="checkbox-box">
+      <span class="icon">
+        <i class="fa-solid fa-envelope"></i>
+      </span>
+        <input name="FirstAid" type="checkbox" id="FirstAid" formControlName="myFirstAid">
+        <label for="email">?האם אתה בעל תעודת מע"ר </label>
+    </div>
+
+    <br> <br>   
+     <input type="submit" value="שליחה" id="submit1" >
+   </form>
+  </div>
+
+</section>

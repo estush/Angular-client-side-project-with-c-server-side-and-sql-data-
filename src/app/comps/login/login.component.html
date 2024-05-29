@@ -1,0 +1,34 @@
+<section>
+    <div class="login-container">
+        <h1>כניסה</h1>
+<form (ngSubmit)="save()" >
+  <!-- מילוי הטופס לכניסה -->
+          <div class="input-box">
+            <span class="icon">
+              <i class="fa-solid fa-envelope"></i>
+            </span>
+            <input  type="email" name="email" placeholder="כתובת מייל" [(ngModel)]="myEmail" id="email" required>
+            <label for="email">הכנס כתובת מייל</label>
+          </div>
+          <div class="input-box">
+            <span class="icon">
+              <i class="fa-solid fa-lock"></i>
+            </span>
+            <input name="pass" type="password" placeholder="סיסמה" [(ngModel)]="myPass" id="contraseña" required >
+            <label for="contraseña">הכנס סיסמא</label>
+          </div>
+            <br>   
+          <input type="submit" value="שליחה" id="submit1" >
+          
+        </form>
+        <br>
+        <br>
+    <!-- <form>
+        <div class="create-account">
+            <input type="text" click()="register()">
+            <a >להרשמה</a>
+        </div>
+    </form> -->
+
+      </div>
+    </section>

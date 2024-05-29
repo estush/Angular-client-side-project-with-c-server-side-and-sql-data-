@@ -1,0 +1,133 @@
+להצגת פרטי המשתמש
+<div *ngIf="up==false"  id="us" name="us">
+    <h1>{{user.firstName}} {{user.lastName}}</h1>
+    <h3>{{user.phone}}</h3>
+    <h3>{{user.email}}</h3>
+    <h3>{{user.password}}</h3>
+    <h3>{{user.isFirstAid}}</h3>
+    <button (click)="update()" name="up" id="up"> עדכון פרטים אישיים</button>
+    <button (click)="removal()" name="up" id="up"> ביטול רישום</button>
+</div>
+<!-- לעידכון פרטים -->
+<div *ngIf="up==true" >
+    <section>
+    <div class="login-container">
+          <h1>עדכון פרטים אישיים</h1>
+          <!-- הטופס למילוי להרשמה -->
+       <form (ngSubmit)="save()"  [formGroup]="myForm" >
+      <div class="input-box">
+        <span class="icon">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <label for="firstName">שם פרטי </label>
+        <input name="firstName" type="text"  id="firstName" formControlName="myFirstName" >
+        
+      </div>
+  
+      <div class="input-box">
+        <span class="icon">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <label for="lasttName"> שם משפחה</label>
+        <input name="lasttName" type="text"   id="lastName" formControlName="myLastName" >
+        
+      </div>
+  
+      <div class="input-box">
+        <span class="icon">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <label for="phone">מספר טלפון </label>
+        <input name="phone" type="text" value="{{user.phone}}" id="phone"  formControlName="myPhone">
+        
+      </div>
+  
+      <div class="input-box">
+        <span class="icon">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+          <label for="email">כתובת מייל</label>
+          <input name="email" type="email" value="{{user.email}}" id="email" formControlName="myEmail">
+      </div>
+  
+      <div class="input-box">
+              <span class="icon">
+                <i class="fa-solid fa-lock"></i>
+              </span>
+              <label for="contraseña">סיסמה</label>
+              <input name="pass" type="password" value="{{user.password}}" id="contraseña" formControlName="myPass">
+
+      </div>
+  
+      <div class="checkbox-box">
+        <span class="icon">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+          <label for="email">בעל תעודת מע"ר </label>
+          <input name="FirstAid" type="checkbox" id="FirstAid" formControlName="myFirstAid">
+          
+      </div>
+  
+      <br>  
+       <input type="submit" value="לשמירת השינויים" id="submit1" >
+     </form>
+    </div>
+  
+  </section>
+
+</div>
+<!-- 
+<select [(ngModel)]="selectedType" (change)="selectedType()" name="aaa">
+ 
+  <option value=-1>כל הטיולים</option>
+  <option *ngFor="let t of allTypes" [value]="t.typeId" >{{t.typeName}}</option>
+</select> -->
+<!-- סינון לפי עבר ועתיד -->
+<select [(ngModel)]="selectTime" name="aaa">
+  <!-- <option selected >כל הטיולים</option>  -->
+  <option value=-1 [(ngModel)]="selectTime">כל הטיולים</option>
+  
+  <option value=1 [(ngModel)]="selectTime">טיולים מהעבר</option>
+  <option value=2 [(ngModel)]="selectTime">טיולים בעתיד</option>
+</select>
+<!-- מיון לפי מחיר\סוג -->
+<ul>
+  <li (click)="priceSort()">מיון לפי מחיר</li>
+  <li (click)="typeSort()">מיון לפי סוג טיול</li>
+</ul>
+
+<!-- הצגת טיולים בסינון לפי סוג טיול -->
+<!-- הצגת כל הטיולים שהוזמנו -->
+
+<div *ngIf="selectTime==-1">
+  <div>כל הטיולים</div>
+  <div *ngFor="let i of allTrips">
+    <div class="userName">{{i.yhad}}</div>
+  </div>
+</div>
+
+
+    <!-- <img class="pic-1" src="../../../assets/images/images1/{{i.picture}}.jpg"> -->
+    <!-- <h3 class="title"><a href="#">{{i.yhad}}</a></h3> -->
+ 
+  
+  <div *ngIf="selectTime==1">
+    <div>טיולים מהעבר</div>
+    <div *ngFor="let i of allTrips">
+      <div *ngIf="today>i.tripDate!">
+        <div class="userName">{{i.yhad}}</div>
+      </div>
+      
+    </div>   
+  </div> 
+
+  <div *ngIf="selectTime==2">
+    <div>טיולים בעתיד </div>
+    <div *ngFor="let i of allTrips">
+      <div *ngIf="i.tripDate!>today">
+        <div class="userName">{{i.yhad}}</div>
+        <button (click)="cancel()">ביטול הזמנה</button>
+      </div>
+    </div>   
+  </div> 
+

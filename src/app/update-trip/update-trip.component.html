@@ -1,0 +1,74 @@
+<p>update-trip works!</p>
+
+<div  >
+    <section>
+    <div class="login-container">
+          <h1>עדכון פרטי טיול</h1>
+          <!-- הטופס למילוי להרשמה -->
+       <form (ngSubmit)="save()"  [formGroup]="myForm" >
+
+        <select [(ngModel)]="selectedType" (change)="selected()" name="aaa">
+            <!-- <option selected >כל הטיולים</option>  -->
+            <option [value]="trip.tripTypeId">{{trip.tripTypeName}}</option>
+            <option *ngFor="let t of allTypes" [value]="t.typeId" >{{t.typeName}}</option>
+          </select>
+          <input  type="button" (click)="other()"  value="אחר">
+          <input *ngIf="oth==true" placeholder="הוספת סוג נוסף">
+          <input *ngIf="oth==true" type="button" [(ngModel)]="newType.typeName" (click)="other()" value="שמירה">
+
+      <div class="input-box">
+        <span class="icon">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <label for="firstName">משך זמן הטיול </label>
+        <input name="firstName" type="text" value="{{trip.tripTime}}" id="firstName" formControlName="tripTime" >
+        
+      </div>
+      <!--מחיר -->
+      <div class="input-box">
+        <span class="icon">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <label for="firstName">מחיר הטיול</label>
+        <input name="firstName" type="text" value="{{trip.price}}" id="firstName" formControlName="tripTime" > 
+      </div>
+
+      <!--שינוי יעד הטיול -->
+      <div class="input-box">
+        <span class="icon">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <label for="firstName">יעד </label>
+        <input name="firstName" type="text" value="{{trip.yhad}}" id="firstName" formControlName="yhad" > 
+      </div>
+  
+      <!-- <div class="input-box">
+        <span class="icon">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <label for="phone">סוג טיול</label>
+        <select value="{{trip.tripTypeName}}" id="phone"  formControlName="tripTypeName">
+            <option value="{{trip.tripTypeName}}">{{trip.tripTypeName}}</option>
+        </select>
+        
+      </div> -->
+
+
+  
+      <div class="checkbox-box">
+        <span class="icon">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+          <label for="email">האם יש צורך בחובש</label>
+          <input name="FirstAid" type="checkbox" id="FirstAid" formControlName="isFirstAid">
+          
+      </div>
+  
+      <br>  
+       <input type="submit" value="לשמירת השינויים" id="submit1" >
+     </form>
+    </div>
+  
+  </section>
+
+</div>

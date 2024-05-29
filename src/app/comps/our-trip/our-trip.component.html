@@ -1,0 +1,67 @@
+<!-- בחירת סוגי טיולים  -->
+
+<h2>לבחירת סוג טיול</h2>
+<form>
+  <input type="search" placeholder="look for">
+  <select [(ngModel)]="selectedType" (change)="selected()" name="aaa">
+    <!-- <option selected >כל הטיולים</option>  -->
+    <option value=-1>כל הטיולים</option>
+    <option *ngFor="let t of allTypes" [value]="t.typeId" >{{t.typeName}}</option>
+  </select>
+</form>
+<button  *ngIf="us.isAdmin" (click)=" addTrip()" name="add" id="add">הוספת טיול</button>
+
+<!-- הצגת כל הטיולים -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" /> 
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="section-title text-center mb-4 pb-2"> </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- דיב לעיצוב תמונה -->
+      <div class="col-md-3 col-sm-6" *ngFor="let t of allTrips">
+        <div *ngIf="typeTrip==-1||typeTrip==t.tripTypeId">
+          <div class="product-grid">
+            <div class="product-image">
+              <a href="#" class="image">
+                <!-- הצגת התמונה ושעומדים עליה היא מתחלפת -->
+                <img class="pic-1" src="../../../assets/images/images1/{{t.picture}}.jpg">
+                <img class="pic-2" src="../../../assets/images/images2/{{t.picture}}.jpg">
+              </a>
+              <!-- הצגת האייקונים לפרטים והזמנה -->
+              <ul class="product-links">
+                <button (click)="details(t.tripId!)" > <li><a ><i class="fa fa-search"></i></a></li></button>
+                <button (click)="addToBag(t.tripId!)" ><li><a  ><i class="fas fa-shopping-cart"></i></a></li></button>
+                <!-- <button (click)="details(t.tripId!)" ><li class="a"><i class="fa fa-search" ></i></li></button>
+                <button (click)="addToBag(t.tripId!)" ><li class="a"><i class="fas fa-shopping-cart" ></i></li></button> -->
+                <div id="price">{{t.price}}$ :מחיר </div>
+              </ul>
+              </div>
+              <!-- הצגת יעד ותאריך -->
+              <div class="product-content">
+                <h3 class="title"><a href="#">{{t.yhad}}</a></h3>
+                <div class="price">{{t.tripDate}}</div>
+                <div *ngIf="us.isAdmin">{{t.isFirstAid}}</div>
+                <button  *ngIf="us.isAdmin" (click)=" updateTrip(t.tripId!)" name="updateTrip" id="updateTrip">עריכה</button>
+                <button  *ngIf="us.isAdmin" (click)=" invited()" name="invited" id="invited">צפיה בהזמנות</button>
+        </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- </body> -->
+

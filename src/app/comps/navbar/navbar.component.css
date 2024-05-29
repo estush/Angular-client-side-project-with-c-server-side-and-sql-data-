@@ -1,0 +1,99 @@
+nav {
+    background-color: #333;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+  /* nav {
+    background-image: url('/src/assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  } */
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+    background-color: #111;
+  }
+  .large-bar {
+    height: 200px;
+  }
+  
+  .thin-bar {
+    height: 70px;
+  }
+  
+  .active {
+    border: 2px solid rgb(193, 197, 130);
+    border-radius: 15px;
+    color: rgb(184, 186, 66);
+    /* background-color: ; */
+  }
+  
+
+
+
+
+  .wave::after {
+    content: "";
+    position: fixed;
+    width: 250%;
+    height: 50%;
+    background-color: #005196;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%) skew(0, -10deg);
+    border-radius: 50%;
+    z-index: 5;
+    animation: wavy 2s infinite linear alternate;
+  }
+  
+  .wave-2::after {
+    content: "";
+    position: fixed;
+    width: 350%;
+    height: 50%;
+    background-color: #6192bc;
+    top: 70%;
+    left: -50%;
+    transform: translateX(-50%) skew(0, -10deg);
+    border-radius: 50%;
+    z-index: -1;
+    animation: wavy2 2s infinite linear alternate;
+  }
+  
+  @keyframes wavy {
+    from {
+      transform: translateX(-50%) skew(0, -10deg);
+    }
+    to {
+      transform: translateX(-70%) skew(10deg, 0);
+    }
+  }
+  
+  @keyframes wavy2 {
+    from {
+      transform: translateX(-50%) skew(0, -10deg);
+    }
+    to {
+      transform: translateX(-70%) skew(10deg, 0);
+    }
+  }
